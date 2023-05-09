@@ -36,7 +36,6 @@ print(json.dumps(result, indent=4))
 # result = (client.query.get("Question", ["question answer"]).do())
 # print(json.dumps(result, indent=4))
 
-
 ask = {
   "question": "Can I be fired?",
   "properties": ["question"]
@@ -51,36 +50,3 @@ result = (
 )
 
 print(json.dumps(result, indent=4))
-
-
-
-# result = (
-#   client.query
-#   .get("Question", ["answer", "_additional {answer {hasAnswer certainty property result startPosition endPosition} }"])
-#   .with_ask(ask)
-#   .with_limit(2)
-#   .do()
-# )
-
-# print(json.dumps(result, indent=4))
-
-
-
-# # https://weaviate.io/developers/weaviate/api/graphql/explore
-# explore_questions_query = """
-#   {
-#     Explore (
-#       nearText: {
-#         concepts: ["heaviest animals"],
-#       }
-#     ) {
-#       beacon
-#       certainty 
-#       distance 
-#       className
-#     }
-#   }
-# """
-
-# query_result = client.query.raw(explore_questions_query)
-# print(query_result)

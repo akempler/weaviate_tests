@@ -13,39 +13,31 @@ client = weaviate.Client(
 )
 
 schema = client.schema.get()
-#print(json.dumps(schema, indent=4))
 
-
-#some_objects = client.data_object.get()
-#print(json.dumps(some_objects, indent=4))
-
-# client.data_object.get()
-
-nearText = {"concepts": ["pregnant"]}
+nearText = {"concepts": ["How many kittens are a lot to live with?"]}
 
 result = (
     client.query
-    .get("Question", ["question", "answer", "category"])
+    .get("JudicialDocument", ["category", "filename", "textVector"])
     .with_near_text(nearText)
-    .with_limit(2)
+    .with_limit(1)
+    .with_additional(["distance"])
     .do()
 )
 
 print(json.dumps(result, indent=4))
 
-# result = (client.query.get("Question", ["question answer"]).do())
-# print(json.dumps(result, indent=4))
 
 ask = {
-  "question": "Can I be fired?",
-  "properties": ["question"]
+  "question": "How many kittens are a lot to live with?",
+  "properties": ["category", "filename", "textVector"]
 }
 
 result = (
   client.query
-  .get("Question", ["answer"])
+  .get("JudicialDocument", ["filename", "_additional {answer {hasAnswer certainty property result startPosition endPosition} }"])
   .with_ask(ask)
-  .with_limit(2)
+  .with_limit(1)
   .do()
 )
 

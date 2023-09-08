@@ -12,20 +12,20 @@ client = weaviate.Client(
     },
 )
 
-client.data_object.get()
+schema = client.schema.get()
 
-# Look for questions that are similar to the term "biology".
-nearText = {"concepts": ["biology"]}
+
+ask = {
+  "question": "Who was the detective in the case?",
+  "properties": ["category", "filename", "textVector"]
+}
 
 result = (
-    client.query
-    .get("Question", ["question", "answer", "category"])
-    .with_near_text(nearText)
-    .with_limit(2)
-    .do()
+  client.query
+  .get("JudicialDocument", ["filename", "_additional {answer {hasAnswer certainty property result startPosition endPosition} }"])
+  .with_ask(ask)
+  .with_limit(1)
+  .do()
 )
 
-print(json.dumps(result, indent=4))
-
-result = (client.query.get("Question", ["question answer"]).do())
 print(json.dumps(result, indent=4))

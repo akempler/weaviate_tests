@@ -10,23 +10,28 @@ client = weaviate.Client(
 
 # ===== add schema ===== 
 class_obj = {
-    "class": "Faq",
-    "description": "Information from a Jeopardy! question",  # description of the class
+    "class": "JudicalDocument",
+    "description": "Documents for querying",  # description of the class
     "properties": [
         {
             "dataType": ["text"],
-            "description": "The category",
+            "description": "The filename of the document",
+            "name": "filename",
+        },
+        {
+            "dataType": ["text"],
+            "description": "The title of the document",
+            "name": "title",
+        },
+        {
+            "dataType": ["text"],
+            "description": "The document category",
             "name": "category",
         },
         {
             "dataType": ["text"],
-            "description": "The question",
-            "name": "question",
-        },
-        {
-            "dataType": ["text"],
-            "description": "The answer",
-            "name": "answer",
+            "description": "The text of the document",
+            "name": "textVector",
         }
     ],
     "vectorizer": "text2vec-openai",
@@ -36,4 +41,3 @@ client.schema.create_class(class_obj)
 
 schema = client.schema.get()
 print(json.dumps(schema, indent=4))
-

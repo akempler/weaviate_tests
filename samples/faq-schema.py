@@ -10,28 +10,23 @@ client = weaviate.Client(
 
 # ===== add schema ===== 
 class_obj = {
-    "class": "JudicalDocument",
-    "description": "Documents for querying",  # description of the class
+    "class": "Faq",
+    "description": "Faqs for querying",
     "properties": [
         {
             "dataType": ["text"],
-            "description": "The filename of the document",
-            "name": "filename",
-        },
-        {
-            "dataType": ["text"],
-            "description": "The title of the document",
+            "description": "The title/question of the faq",
             "name": "title",
         },
         {
             "dataType": ["text"],
-            "description": "The document category",
-            "name": "category",
+            "description": "The text/answer of the faq",
+            "name": "textVector",
         },
         {
             "dataType": ["text"],
-            "description": "The text of the document",
-            "name": "textVector",
+            "description": "The faq category",
+            "name": "category",
         }
     ],
     "vectorizer": "text2vec-transformers",

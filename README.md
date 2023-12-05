@@ -20,3 +20,13 @@ Install the requirements if you want to use the python sample files:
 `pip install -r requirements.txt`
 
 Access the ui at: http://localhost:8080/
+
+
+For local testing, you can run it with ngrok.
+```
+ngrok http 8080
+```
+or provide a domain:
+```
+ngrok http --domain virgil.ngrok.dev 8080
+```

@@ -12,9 +12,9 @@ client = weaviate.Client(
 class_obj = {
     "class": "Chunk",
     "description": "Chunks of text from website pages.",
-    "vectorizer": "text2vec-transformers",
+    "vectorizer": "text2vec-openai",
     "moduleConfig": {
-      "text2vec-transformers": {
+      "text2vec-openai": {
         "vectorizeClassName": False
       }
     },
@@ -24,7 +24,7 @@ class_obj = {
             "description": "A unique id of the index.",
             "name": "index_id",
             "moduleConfig": {
-              "text2vec-transformers": {
+              "text2vec-openai": {
                 "skip": True,
                 "vectorizePropertyName": False
               }
@@ -35,7 +35,7 @@ class_obj = {
             "description": "The sequential index of the chunk in the text.",
             "name": "chunk_sequence",
             "moduleConfig": {
-              "text2vec-transformers": {
+              "text2vec-openai": {
                 "skip": True,
                 "vectorizePropertyName": False
               }
@@ -51,7 +51,7 @@ class_obj = {
             "description": "The id of the entity the chunk belongs to.",
             "name": "entity_id",
             "moduleConfig": {
-              "text2vec-transformers": {
+              "text2vec-openai": {
                 "skip": True,
                 "vectorizePropertyName": False
               }
@@ -62,7 +62,7 @@ class_obj = {
             "description": "The type of entity.",
             "name": "entity_type",
             "moduleConfig": {
-              "text2vec-transformers": {
+              "text2vec-openai": {
                 "skip": True,
                 "vectorizePropertyName": False
               }
@@ -73,7 +73,7 @@ class_obj = {
             "description": "The entity bundle.",
             "name": "bundle",
             "moduleConfig": {
-              "text2vec-transformers": {
+              "text2vec-openai": {
                 "skip": True,
                 "vectorizePropertyName": False
               }
@@ -84,7 +84,7 @@ class_obj = {
             "description": "An optional parent entity of the entity the chunk belongs to.",
             "name": "parent_entity_id",
             "moduleConfig": {
-              "text2vec-transformers": {
+              "text2vec-openai": {
                 "skip": True,
                 "vectorizePropertyName": False
               }
@@ -95,7 +95,7 @@ class_obj = {
             "description": "The type of entity of the parent entity.",
             "name": "parent_entity_type",
             "moduleConfig": {
-              "text2vec-transformers": {
+              "text2vec-openai": {
                 "skip": True,
                 "vectorizePropertyName": False
               }
